@@ -3,10 +3,12 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Suspend 
+coordmode, caret, screen
+#Hotstring EndChars `n
 
-#Hotstring EndChars `t
-
-::ijkf::
+:*0B0:ijkf::
+Suspend, permit
+Send, {left 5}{del 5}
 Suspend off
 return
 
@@ -29,6 +31,7 @@ return
 
 ;pressing non-hotkey buttons causes the keyboard layout to go back to normal for some reason. This line just fixes this problem for the "c" button
 :*:c::c
+
 
 :c*:i::
 
