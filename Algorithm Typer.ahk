@@ -6,12 +6,15 @@ Suspend
 coordmode, caret, screen
 #Hotstring EndChars `n
 
-:*0B0:ijkf::
+:B0*0:ijkf::
 Suspend, permit
-Send, {left 5}{del 5}
+Send, {left 5}{del 5} ;use {delete} instead of {backspace} to remove any chance of browsers going back a page because you pressed backspace (and cause you to loose all your data)
 Suspend off
 return
 
+1::
+Send, hello
+return
 
 esc::
 If(A_IsSuspended = 0){
