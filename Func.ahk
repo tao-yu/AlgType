@@ -2,45 +2,43 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory
-
-#IfWinActive ahk_class Notepad
-
+#InstallKeybdHook
+;#ifwinactive ahk_class Notepad
 
 double := false
-Esc:: Suspend
 
+Esc::ExitApp
+1::Suspend on
 ^g:: 
 Suspend, permit
 run Func.ahk
 return
 
 keypress(thiskey, move, apos){
-	
-	logt(double)
-	logt(A_PriorKey)
-	logt(thiskey)
-	
-	If (%double% = true && A_PriorKey == thiskey && A_ThisHotkey == A_PriorHotkey){
-	
+
+	static double = false
+		
+	if (double = 1 && thiskey = A_priorkey && A_ThisHotkey = A_PriorHotkey){
+		
 		
 		double := false
-		if(%apos% = true){
+		if(apos = true){
 			Send, 2
 		} else {
 			Send, 2
 		}
 		return 
+		
 
 	} else{
-		double = true
+		double := true
 	}
 	
-	if(%apos% = true){
-		Send, %move%'
-	} else {
-		Send, %move%
-	}
-	;Send, [%A_PriorKey%] [%thiskey%]
+	
+	Send, %move%
+	
+
+	
 return
 
 }
@@ -56,151 +54,148 @@ Send, {end}
 }
 
 
-
-
-:c*:i::
-keypress("i","R", false)
-return
-:c*:k::
-keypress("k","R'", true)
+i::
+keypress("i","R",false)
 return
 
-:c*:j::
-keypress("j","U", false)
+k::
+keypress("k","R'",false)
 return
-:c*:f::
-keypress("f","U'", true)
-return
-
-:c*:h::
-keypress("h","F", false)
-return
-:c*:g::
-keypress("g","F'", true)
+j::
+keypress("j","U",false)
 return
 
-:c*:w::
-keypress("w","B", false)
+f::
+keypress("f","U'",false)
 return
-:c*:o::
-keypress("o","B'", true)
-return
-
-:c*:d::
-keypress("d","L", false)
-return
-:c*:e::
-keypress("e","L'", true)
+h::
+keypress("h","F",false)
 return
 
-:c*:s::
-keypress("s","D", false)
+g::
+keypress("g","F'",false)
 return
-:c*:l::
-keypress("l","D'", true)
-return
-
-
-:c*:u::
-keypress("u","r", false)
-return
-:c*:m::
-keypress("m","r'", true)
+w::
+keypress("w","B",false)
 return
 
-:c*:v::
-keypress("v","l", false)
+o::
+keypress("o","B'",false)
 return
-:c*:r::
-keypress("r","l'", true)
-return
-
-
-:c*:I::
-keypress("I","r", false)
-return
-:c*:K::
-keypress("K","r'", true)
+d::
+keypress("d","L",false)
 return
 
-:c*:J::
-keypress("J","u", false)
+e::
+keypress("e","L'",false)
 return
-:c*:F::
-keypress("F","u'", true)
-return
-
-:c*:H::
-keypress("H","f", false)
-return
-:c*:G::
-keypress("G","f'", true)
+s::
+keypress("s","D",false)
 return
 
-:c*:W::
-keypress("W","b", false)
-return
-:c*:O::
-keypress("O","b'", true)
+l::
+keypress("l","D'",false)
 return
 
-:c*:D::
-keypress("D","l", false)
-return
-:c*:E::
-keypress("E","l'", true)
+u::
+keypress("u","r",false)
 return
 
-:c*:S::
-keypress("S","d", false)
+m::
+keypress("m","r'",false)
 return
-:c*:L::
-keypress("L","d'", true)
-return
-
-
-:c*:'::
-keypress("'","M", false)
-return
-:c*:[::
-keypress("[","M'", true)
+v::
+keypress("v","l",false)
 return
 
-:c*:\::
-keypress("\","E", false)
-return
-:c*:/::
-keypress("/","E'", true)
+r::
+keypress("r","l'",false)
 return
 
-:c*:.::
-keypress(".","S", false)
-return
-:c*:z::
-keypress("z","S'", true)
++i::
+keypress("+i","r",false)
 return
 
-
-:c*:t::
-keypress("t","x", false)
++k::
+keypress("+k","r'",false)
 return
-:c*:n::
-keypress("n","x'", true)
-return
-
-:c*:;::
-keypress(";","y", false)
-return
-:c*:a::
-keypress("a","y'", true)
++j::
+keypress("+j","u",false)
 return
 
-:c*:p::
-keypress("p","z", false)
++f::
+keypress("+f","u'",false)
 return
-:c*:q::
-keypress("q","z'", true)
++h::
+keypress("+h","f",false)
 return
 
++g::
+keypress("+g","f'",false)
+return
++w::
+keypress("+w","b",false)
+return
 
++o::
+keypress("+o","b'",false)
+return
++d::
+keypress("+d","l",false)
+return
 
++e::
+keypress("+e","l'",false)
+return
++s::
+keypress("+s","d",false)
+return
+
++l::
+keypress("+l","d'",false)
+return
+
+'::
+keypress("'","M",false)
+return
+
+[::
+keypress("[","M'",false)
+return
+\::
+keypress("\","E",false)
+return
+
+/::
+keypress("/","E'",false)
+return
+.::
+keypress(".","S",false)
+return
+
+z::
+keypress("z","S'",false)
+return
+
+t::
+keypress("t","x",false)
+return
+
+n::
+keypress("n","x'",false)
+return
+
+SC027::
+keypress(";","y",false)
+return
+
+a::
+keypress("a","y'",false)
+return
+p::
+keypress("p","z",false)
+return
+
+q::
+keypress("q","z'",false)
+return
