@@ -4,6 +4,11 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Suspend 
 
+F12::
+Suspend permit
+ExitApp
+return
+
 ;TYPE SUNE TO ACTIVATE
 ;---------------------
 ::ijkjiffk::
@@ -20,6 +25,35 @@ esc::
 If(A_IsSuspended = 0){
 Suspend
 }
+return
+
+;ALG.CUBING.NET
+;---------------------
+
+;markdown
+!m::
+Suspend, permit
+
+backup = clipboard
+Send, ^c
+clipboard :=
+Clipwait
+
+Send, [%clipboard%](https://alg.cubing.net/?alg=%clipboard%&type=alg)
+clipboard := backup
+return
+
+;bbcode
+!b::
+Suspend, permit
+
+backup = clipboard
+Send, ^c
+clipboard :=
+Clipwait
+
+Send, [url="https://alg.cubing.net/?alg=%clipboard%&type=alg"]%clipboard%[/url]
+clipboard := backup
 return
 
 ;FOR TYPING COMMUTATORS AND BRACKETS
