@@ -3,37 +3,64 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Suspend 
-coordmode, caret, screen
-#Hotstring EndChars `n
 
-:B0*0:ijkf::
-Suspend, permit
-Send, {left 5}{del 5} ;use {delete} instead of {backspace} to remove any chance of browsers going back a page because you pressed backspace (and cause you to loose all your data)
+;TYPE SUNE TO ACTIVATE
+;---------------------
+::ijkjiffk::
 Suspend off
 return
 
-1::
-Send, hello
+::ijkjijjk::
+Suspend off
 return
 
+;PRESS ESC TO SUSPEND
+;---------------------
 esc::
 If(A_IsSuspended = 0){
 Suspend
 }
 return
 
-;so you can type square brackets for commutators
+;FOR TYPING COMMUTATORS AND BRACKETS
+;---------------------
+
+^space::
+Send, {bs}{right}{space}
+return
+
+;type commutators
+^m::
+Send, [,]{left 2}
+return
+
+;type comjugates
+^j::
+Send, [:]{left 2}
+return
+
+;type square brackets
+^[::
+Send []{left}
+return
+
+;type parentheses
+^9::
+Send (){left}
+return
+
+;so you can type square brackets with shift+[
 +[::
 send, [
 return
 
-;so you can type commas
+;so you can type commas with shift+,
 +,::
 send, ,
 return
 
-;pressing non-hotkey buttons causes the keyboard layout to go back to normal for some reason. This line just fixes this problem for the "c" button
-:*:c::c
+;UPPERCASE MOVES
+;---------------------
 
 
 :c*:i::
@@ -45,13 +72,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, R{space}
 return
- :c*:k::
+:c*:k::
 
 	If (%double% = true && A_PriorKey = "k" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -59,7 +86,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -74,13 +101,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, U{space}
 return
- :c*:f::
+:c*:f::
 
 	If (%double% = true && A_PriorKey = "f" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -88,7 +115,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -103,13 +130,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, F{space}
 return
- :c*:g::
+:c*:g::
 
 	If (%double% = true && A_PriorKey = "g" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -117,7 +144,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -132,13 +159,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, B{space}
 return
- :c*:o::
+:c*:o::
 
 	If (%double% = true && A_PriorKey = "o" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -146,7 +173,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -161,13 +188,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, L{space}
 return
- :c*:e::
+:c*:e::
 
 	If (%double% = true && A_PriorKey = "e" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -175,7 +202,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -190,13 +217,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, D{space}
 return
- :c*:l::
+:c*:l::
 
 	If (%double% = true && A_PriorKey = "l" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -204,13 +231,14 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, D'{space}
 return
 
+;LOWERCASE MOVES
 
 :c*:u::
 
@@ -220,13 +248,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, r{space}
 return
- :c*:m::
+:c*:m::
 
 	If (%double% = true && A_PriorKey = "m" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -234,7 +262,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -249,13 +277,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, l{space}
 return
- :c*:r::
+:c*:r::
 
 	If (%double% = true && A_PriorKey = "r" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -263,7 +291,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -279,13 +307,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, r{space}
 return
- :c*:K::
+:c*:K::
 
 	If (%double% = true && A_PriorKey = "K" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -293,7 +321,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -308,13 +336,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, u{space}
 return
- :c*:F::
+:c*:F::
 
 	If (%double% = true && A_PriorKey = "F" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -322,7 +350,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -337,13 +365,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, f{space}
 return
- :c*:G::
+:c*:G::
 
 	If (%double% = true && A_PriorKey = "G" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -351,7 +379,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -366,13 +394,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, b{space}
 return
- :c*:O::
+:c*:O::
 
 	If (%double% = true && A_PriorKey = "O" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -380,7 +408,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -395,13 +423,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, l{space}
 return
- :c*:E::
+:c*:E::
 
 	If (%double% = true && A_PriorKey = "E" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -409,12 +437,13 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, l'{space}
 return
+
 
 :c*:S::
 
@@ -424,13 +453,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, d{space}
 return
- :c*:L::
+:c*:L::
 
 	If (%double% = true && A_PriorKey = "L" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -438,16 +467,15 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, d'{space}
 return
 
-
-;no*c
-
+;SLICE MOVES
+;---------------------
 :c*:'::
 
 	If (%double% = true && A_PriorKey = "'" && A_ThisHotkey == A_PriorHotkey){
@@ -456,13 +484,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, M{space}
 return
- :c*:[::
+:c*:[::
 
 	If (%double% = true && A_PriorKey = "[" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -470,7 +498,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -485,13 +513,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, E{space}
 return
- :c*:.::
+:c*:.::
 
 	If (%double% = true && A_PriorKey = "." && A_ThisHotkey == A_PriorHotkey){
 	
@@ -499,7 +527,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -514,13 +542,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, S{space}
 return
- :c*:x::
+:c*:x::
 
 	If (%double% = true && A_PriorKey = "x" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -528,13 +556,15 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, S'{space}
 return
 
+;ROTATIONS
+;---------------------
 
 :*:t::
 
@@ -544,7 +574,7 @@ return
 		Send, {backspace}2{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -559,7 +589,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -574,7 +604,7 @@ return
 		Send, {backspace}2{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -588,7 +618,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -603,13 +633,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, y{space}
 return
- :c*:a::
+:c*:a::
 
 	If (%double% = true && A_PriorKey = "a" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -617,7 +647,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
@@ -632,13 +662,13 @@ return
 		Send, {BS}2{Space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
 Send, z{space}
 return
- :c*:q::
+:c*:q::
 
 	If (%double% = true && A_PriorKey = "q" && A_ThisHotkey == A_PriorHotkey){
 	
@@ -646,7 +676,7 @@ return
 		Send, {backspace}{backspace}2'{space}
 		return
 
-		}
+	}
 	else{
 		double = true
 	}
