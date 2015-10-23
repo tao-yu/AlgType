@@ -19,6 +19,14 @@ return
 Suspend off
 return
 
+^g::
+Suspend permit
+Input key, I L1
+IfEqual key,j
+Suspend off
+return
+
+
 ;PRESS ESC TO SUSPEND
 ;---------------------
 esc::
@@ -50,7 +58,7 @@ Suspend, permit
 backup = clipboard
 Send, ^c
 clipboard :=
-Clipwait
+Clipwait, 1
 
 Send, [url="https://alg.cubing.net/?alg=%clipboard%&type=alg"]%clipboard%[/url]
 clipboard := backup
