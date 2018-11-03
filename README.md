@@ -11,6 +11,17 @@ R' R' is cancelled into R2'. (R2 R is not cancelled into R3 or R' though, and R 
 - All 3x3 moves are supported:
 RUFBLDrufbldMESxyzR'U'F'B'L'D'r'u'f'b'l'd'M'E'S'x'y'z' can all be typed. Type lowercase moves using the shift key.
 
+- Shortcuts for commutators and conjugates: 
+Ctrl+m inputs "[,]" and Ctrl+j inputs "[:]"
+The keyboard shortcut ctrl + space can be used to move on to the next part of the commutator without messing up the spacing. See a demonstration here: http://gfycat.com/GentleSlushyAtlanticblackgoby
+
+- Some other shortcuts: 
+ctrl + 9 = "()", ctrl + [ = "[]". These only work when you're in the algorithm typing mode.
+
+- Plays nicely with big cube notation.
+Just type the number before the move e.g. 3R, 4r2, 3-4r'
+
+
 ### Full Keymap
 | Move | Key |
 |--|--|
@@ -42,15 +53,5 @@ RUFBLDrufbldMESxyzR'U'F'B'L'D'r'u'f'b'l'd'M'E'S'x'y'z' can all be typed. Type lo
 | E'| .|
 | S | ,|
 | S'| x|
-
-- Shortcuts for commutators and conjugates: 
-Ctrl+m inputs "[,]" and Ctrl+j inputs "[:]"
-The keyboard shortcut ctrl + space can be used to move on to the next part of the commutator without messing up the spacing. See a demonstration here: http://gfycat.com/GentleSlushyAtlanticblackgoby
-
-- Some other shortcuts: 
-ctrl + 9 = "()", ctrl + [ = "[]". These only work when you're in the algorithm typing mode.
-
-- Plays nicely with big cube notation.
-Just type the number before the move e.g. 3R, 4r2, 3-4r'
 
 
